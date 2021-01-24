@@ -2,14 +2,20 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-export default function Header() {
+interface IProps<GLYPHS extends string> {
+  iconLeft?: GLYPHS;
+  iconRight?: GLYPHS;
+  text: string;
+}
+
+export default function Header({text, iconLeft, iconRight}: IProps<any>) {
   return (
     <View style={styles.container}>
       <View style={styles.leftContent}>
-        <Feather name="chevron-left" color="#FCFCFF" size={20} />
-        <Text style={styles.title}>Explore</Text>
+        {iconLeft && (<Feather name={iconLeft} color="#FCFCFF" size={20} style={{marginRight: 20}}/>)} 
+        <Text style={styles.title}>{text}</Text>
       </View>
-      <Feather name="shopping-cart" color="#FCFCFF" size={20} />
+      {iconRight && (<Feather name="shopping-cart" color="#FCFCFF" size={20} />)}
     </View>
   ) 
 }
@@ -29,7 +35,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    marginLeft: 20,
     fontSize: 16,
     color: '#FCFCFF',
     fontFamily: 'DMSans_400Regular',

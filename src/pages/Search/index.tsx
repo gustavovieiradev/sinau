@@ -10,7 +10,7 @@ import cardRoseImg from '../../images/cardrose.png';
 export default function Search() {
   return (
     <>
-      <Header />
+      <Header text="Explore" iconLeft="chevron-left" iconRight="shopping-cart"/>
       <View style={styles.container}>
         <View style={styles.content}>
           <Input rightIcon="search" colorRightIcon="#161719" sizeRightIcon={20} placeholder="Search..." />
