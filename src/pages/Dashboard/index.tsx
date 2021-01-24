@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 import perfilImg from '../../images/perfil.png';
 import rectangleImg from '../../images/rectangle.png';
