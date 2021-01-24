@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { Feather, FontAwesome } from '@expo/vector-icons';
 
 import perfilImg from '../../images/perfil.png';
 import rectangleImg from '../../images/rectangle.png';
 import cardRoseImg from '../../images/cardrose.png';
+import Card from '../../components/Card';
 
 export default function Dashboard() {
   return (
@@ -57,18 +58,7 @@ export default function Dashboard() {
           </View>
         </View>
         <Text style={styles.textReccomended}>Recommendation</Text>
-        <View style={styles.cardContent}>
-          <View style={styles.cardContentInfo}>
-            <Text style={styles.cardContentInfoText}>Declarative interfaces for any Apple Devices</Text>
-            <Text style={styles.cardContentInfoDescription}>IDR 850.000</Text>
-            <View style={styles.cardContentInfoRating}>
-              <Feather name="star" color="#FFC960" size={13} />
-              <Text style={styles.cardContentInfoRatingText}>4.5</Text>
-              <Text style={styles.cardContentInfoRatingDescription}>By Sarah William</Text>
-            </View>
-          </View>
-          <Image source={cardRoseImg} />
-        </View>
+        <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
       </View>
     </View>
   )
