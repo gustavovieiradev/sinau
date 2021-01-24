@@ -9,7 +9,7 @@ import cardRoseImg from '../../images/cardrose.png';
 export default function MyCourse() {
   return (
     <>
-      <Header text="Search Results" iconLeft="chevron-left" iconRight="shopping-cart"/>
+      <Header text="My Courses" iconLeft="chevron-left" iconRight="shopping-cart"/>
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.title}>
