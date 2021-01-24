@@ -2,8 +2,6 @@ import React from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
-import cardRoseImg from '../../images/cardrose.png';
-
 interface IProps {
   title: string;
   price: string;
@@ -16,7 +14,7 @@ interface IProps {
 export default function Card({title, price, valueRating, descriptionRating, imageRight, imageLeft}: IProps) {
   return (
     <View style={styles.cardContent}>
-      {imageRight && (<Image source={imageRight} style={{marginRight: 15}}/>)}
+      {imageRight && (<Image source={imageRight} style={{marginRight: 22}}/>)}
       <View style={styles.cardContentInfo}>
         <Text style={styles.cardContentInfoText}>{title}</Text>
         <Text style={styles.cardContentInfoDescription}>{price}</Text>
