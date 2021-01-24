@@ -5,6 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import logoImg from '../../images/logo.png';
 import unionImg from '../../images/Union.png';
 import { RectButton } from 'react-native-gesture-handler';
+import Input from '../../components/Input';
 
 export default function Login() {
   return (
@@ -16,14 +17,8 @@ export default function Login() {
       </View>
       <View style={styles.second}>
         <View>
-          <View style={styles.inputIcon}>
-            <Feather name="mail" color="#6360FF" size={20} />
-            <TextInput style={styles.input} placeholder="Email" />
-          </View>
-          <View style={styles.inputIcon}>
-            <Feather name="lock" color="#6360FF" size={20} />
-            <TextInput style={styles.input} placeholder="Password" />
-          </View>
+          <Input leftIcon="mail" colorLeftIcon="#6360FF" sizeLeftIcon={20} placeholder="Email" />
+          <Input leftIcon="lock" colorLeftIcon="#6360FF" sizeLeftIcon={20} placeholder="Password" />
           <RectButton style={styles.buttonSignIn}>
             <Text style={styles.textButton}>Sign In</Text>
           </RectButton>
