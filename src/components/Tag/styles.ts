@@ -3,9 +3,10 @@ import { StyleSheet } from "react-native";
 interface IParams {
   backgroundColor: string;
   textColor: string;
+  padding: number | string;
 }
 
-export default function Style({ backgroundColor, textColor }: IParams) {
+export default function Style({ backgroundColor, textColor, padding }: IParams) {
   const styles = StyleSheet.create({
     container: {
       flexDirection: 'row',
@@ -13,7 +14,7 @@ export default function Style({ backgroundColor, textColor }: IParams) {
     },
     tag: {
       backgroundColor: backgroundColor,
-      padding: 12,
+      padding: padding,
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 30
