@@ -1,11 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import styleSheet from './styles';
 
 interface IProps {
   text: string;
+  backgroundColor?: string;
+  textColor?: string;
 }
 
-export default function Tag({text}: IProps) {
+export default function Tag({ text, backgroundColor = '#6360FF', textColor = '#FCFCFF'}: IProps) {
+  const styles = styleSheet({backgroundColor, textColor});
   return (
     <View style={styles.container}>
       <View style={styles.tag}>
@@ -13,22 +17,4 @@ export default function Tag({text}: IProps) {
       </View>
     </View>
   )
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    marginRight: 16
-  },
-  tag: {
-    backgroundColor: '#6360FF',
-    padding: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 30
-  },
-  tagText: {
-    color: '#FCFCFF',
-    fontFamily: 'DMSans_400Regular',
-  }
-})
+};
