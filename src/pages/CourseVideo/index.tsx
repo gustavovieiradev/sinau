@@ -7,9 +7,10 @@ import Header from '../../components/Header';
 import profile2Img from '../../images/profile2.png';
 import Tag from '../../components/Tag';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function CourseVideo() {
-  const [currentSegment, setCurrentSegment] = useState<string>('discussion');
+  const [currentSegment, setCurrentSegment] = useState<string>('content');
 
   const navigation = useNavigation();
 
@@ -17,17 +18,21 @@ export default function CourseVideo() {
     navigation.goBack();
   }, []);
 
+  const handleSegment = useCallback((segment: string) => {
+    setCurrentSegment(segment);
+  }, []);
+
   return (
     <>
       <Header text="Course Detail" iconLeft="chevron-left" onPressLeft={goBack} />
       <View style={styles.video} ></View>
       <View style={styles.segments}>
-        <View style={currentSegment === 'content' ? styles.segmentActive : styles.segment}>
+        <TouchableOpacity style={currentSegment === 'content' ? styles.segmentActive : styles.segment} onPress={() => handleSegment('content')} >
           <Text style={currentSegment === 'content' ? styles.segmentActiveText : styles.segmentText}>Course Content</Text>
-        </View>
-        <View style={currentSegment === 'discussion' ? styles.segmentActive : styles.segment}>
+        </TouchableOpacity>
+        <TouchableOpacity style={currentSegment === 'discussion' ? styles.segmentActive : styles.segment} onPress={() => handleSegment('discussion')}>
           <Text style={currentSegment === 'discussion' ? styles.segmentActiveText : styles.segmentText}>Discussion</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       {currentSegment === 'content' && (
         <View style={styles.content}>
