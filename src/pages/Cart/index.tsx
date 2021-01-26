@@ -1,6 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import Card from '../../components/Card';
@@ -21,7 +21,7 @@ export default function Cart() {
     <>
       <Header text="Cart" iconLeft="chevron-left" onPressLeft={goBack} />
       <View style={styles.container}>
-        <View style={styles.content}>
+        <ScrollView style={styles.content}>
           <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
           <View style={styles.cardFooter}>
             <Text style={styles.h2}>Save for later</Text>
@@ -41,17 +41,17 @@ export default function Cart() {
             <Text style={styles.h2}>Add to cart</Text>
             <Text style={styles.h2}>Remove</Text>
           </View>
-
-          <View style={styles.footer}>
-            <View style={styles.divider}></View>
-            <View style={styles.valueCard}>
-              <Text style={styles.h2}>Total Items</Text>
-              <Text style={styles.h1}>IDR 1.100.000</Text>
-            </View>
-            <RectButton style={styles.button}>
-              <Text style={styles.textButton}>Sign In</Text>
-            </RectButton>
+          
+        </ScrollView>
+        <View style={styles.footer}>
+          <View style={styles.divider}></View>
+          <View style={styles.valueCard}>
+            <Text style={styles.h2}>Total Items</Text>
+            <Text style={styles.h1}>IDR 1.100.000</Text>
           </View>
+          <RectButton style={styles.button}>
+            <Text style={styles.textButton}>Sign In</Text>
+          </RectButton>
         </View>
       </View>
     </>
@@ -96,9 +96,11 @@ const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
     bottom: 20,
-    left: 25,
+    left: 0,
     right: 0,
-    width: '100%'
+    paddingHorizontal: 20,
+    width: '100%',
+    backgroundColor: '#F1F1FA',
   },
   button: {
     backgroundColor: '#7DC579',
