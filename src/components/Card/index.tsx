@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface IProps {
   title: string;
@@ -9,11 +10,13 @@ interface IProps {
   descriptionRating: string;
   imageLeft?: any;
   imageRight?: any;
+  handlePress?(): any;
 }
 
-export default function Card({title, price, valueRating, descriptionRating, imageRight, imageLeft}: IProps) {
+export default function Card({title, price, valueRating, descriptionRating, imageRight, imageLeft, handlePress}: IProps) {
+
   return (
-    <View style={styles.cardContent}>
+    <TouchableOpacity style={styles.cardContent} onPress={handlePress}>
       {imageRight && (<Image source={imageRight} style={{marginRight: 22}}/>)}
       <View style={styles.cardContentInfo}>
         <Text style={styles.cardContentInfoText}>{title}</Text>
@@ -25,7 +28,7 @@ export default function Card({title, price, valueRating, descriptionRating, imag
         </View>
       </View>
       {imageLeft && (<Image source={imageLeft} />)}
-    </View>
+    </TouchableOpacity>
   )
 }
 

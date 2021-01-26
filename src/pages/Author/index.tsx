@@ -21,6 +21,10 @@ export default function Author() {
     navigation.navigate('Cart');
   }, []);
 
+  const handleGoCourse = useCallback(() => {
+    navigation.navigate('CourseDetail');
+  }, []);
+
   return (
     <>
       <Header text="Author" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} onPressRight={handleGoCart} />
@@ -60,10 +64,10 @@ export default function Author() {
             <Text style={styles.h1}>Courses</Text>
             <Text style={styles.h2}>Total 4</Text>
           </View>
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={cardRoseImg} />
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={cardRoseImg} handlePress={handleGoCourse}/>
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={cardRoseImg} handlePress={handleGoCourse}/>
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={cardRoseImg} handlePress={handleGoCourse}/>
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={cardRoseImg} handlePress={handleGoCourse}/>
         </View>
       </View>
     </>

@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 
 import perfilImg from '../../images/perfilGrande.png';
 import { useNavigation } from '@react-navigation/native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function Account() {
 
@@ -24,7 +25,7 @@ export default function Account() {
           <Text style={styles.nameUser}>Poetri Lazuardi</Text>
           <Text style={styles.emailUser}>poetri.lazuardi@mail.com</Text>
         </View>
-        <View style={styles.content}>
+        <ScrollView style={styles.content}>
           <Text style={styles.title}>Account Settings</Text>
           <View style={styles.accountItem}>
             <Text style={styles.accountItemText}>Account Security</Text>
@@ -47,7 +48,7 @@ export default function Account() {
             <Text style={styles.accountItemText}>Share Sinau app</Text>
             <Feather name="chevron-right" color="#91919F"  size={20} />
           </View>
-        </View>
+        </ScrollView>
       </View>
     </>
   )

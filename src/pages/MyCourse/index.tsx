@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import Card from '../../components/Card';
@@ -23,6 +23,10 @@ export default function MyCourse() {
     navigation.navigate('Cart');
   }, []);
 
+  const handleGoCourse = useCallback(() => {
+    navigation.navigate('CourseDetail');
+  }, []);
+
   return (
     <>
       <Header text="My Courses" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} onPressRight={handleGoCart} />
@@ -36,9 +40,11 @@ export default function MyCourse() {
               <Text style={styles.h2}>Done</Text>
             </TouchableOpacity>
           </View>
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
+          <ScrollView>
+            <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
+            <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
+            <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
+          </ScrollView>
         </View>
       </View>
       

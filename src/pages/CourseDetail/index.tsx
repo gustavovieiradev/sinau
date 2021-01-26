@@ -6,7 +6,7 @@ import Tag from '../../components/Tag';
 
 import rectangle128Img from '../../images/Rectangle128.png';
 import profile2Img from '../../images/profile2.png';
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
 export default function CourseDetail() {
@@ -18,6 +18,14 @@ export default function CourseDetail() {
   
   const handleGoCart = useCallback(() => {
     navigation.navigate('Cart');
+  }, []);
+
+  const handleGoAuthor = useCallback(() => {
+    navigation.navigate('Author');
+  }, []);
+
+  const handleGoCourseVideo = useCallback(() => {
+    navigation.navigate('CourseVideo');
   }, []);
 
   return (
@@ -41,18 +49,18 @@ export default function CourseDetail() {
           <Text style={styles.showMore}>Show more</Text>
           <View style={styles.divider}></View>
           <Text style={styles.h2}>Author</Text>
-          <View style={styles.boxAuthor}>
+          <TouchableOpacity style={styles.boxAuthor} onPress={handleGoAuthor}>
             <Image source={profile2Img} style={styles.imgProfile}/>
             <View style={styles.boxAuthorText}>
               <Text style={styles.boxAuthorTitle}>Sarah William</Text>
               <Text style={styles.boxAuthorSubTitle}>4 courses - 1400 students</Text>
             </View>
-          </View>
+          </TouchableOpacity>
           <View style={styles.boxButton}>
-            <RectButton style={styles.buttonSeeDetail}>
+            <RectButton style={styles.buttonSeeDetail} onPress={handleGoCourseVideo}>
               <Text style={styles.buttonText}>See detail</Text>
             </RectButton>
-            <RectButton style={styles.buttonAddToCart}>
+            <RectButton style={styles.buttonAddToCart} onPress={handleGoCart}>
               <Text style={styles.buttonText}>Add to cart</Text>
             </RectButton>
           </View>

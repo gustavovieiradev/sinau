@@ -19,6 +19,10 @@ export default function SearchResult() {
     navigation.navigate('Cart');
   }, []);
 
+  const handleGoCourse = useCallback(() => {
+    navigation.navigate('CourseDetail');
+  }, []);
+
   return (
     <>
       <Header text="Search Results" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} onPressRight={handleGoCart} />
@@ -28,9 +32,9 @@ export default function SearchResult() {
             <Text style={styles.titleText}>Results for “Swift UI”</Text>
             <Text style={styles.countText}>Total 200</Text>
           </View>
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
         </View>
       </View>
     </>

@@ -17,17 +17,21 @@ export default function Cart() {
     navigation.goBack();
   }, []);
 
+  const handleGoCourse = useCallback(() => {
+    navigation.navigate('CourseDetail');
+  }, []);
+
   return (
     <>
       <Header text="Cart" iconLeft="chevron-left" onPressLeft={goBack} />
       <View style={styles.container}>
         <ScrollView style={styles.content}>
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse}/>
           <View style={styles.cardFooter}>
             <Text style={styles.h2}>Save for later</Text>
             <Text style={styles.h2}>Remove</Text>
           </View>
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={rectanguleImg} />
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={rectanguleImg} handlePress={handleGoCourse}/>
           <View style={styles.cardFooter}>
             <Text style={styles.h2}>Save for later</Text>
             <Text style={styles.h2}>Remove</Text>
@@ -36,7 +40,7 @@ export default function Cart() {
           <View style={styles.divider}></View>
 
           <Text style={styles.h1}>Saved for later</Text>
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={rectanguleImg} />
+          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageRight={rectanguleImg} handlePress={handleGoCourse}/>
           <View style={styles.cardFooter}>
             <Text style={styles.h2}>Add to cart</Text>
             <Text style={styles.h2}>Remove</Text>

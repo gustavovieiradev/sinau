@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import Card from '../../components/Card';
 
 import Header from '../../components/Header';
@@ -23,6 +23,10 @@ export default function Search() {
     navigation.navigate('Cart');
   }, []);
 
+  const handleGoCourse = useCallback(() => {
+    navigation.navigate('CourseDetail');
+  }, []);
+
   return (
     <>
       <Header text="Explore" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} onPressRight={handleGoCart} />
@@ -30,15 +34,20 @@ export default function Search() {
         <View style={styles.content}>
           <Input rightIcon="search" colorRightIcon="#161719" sizeRightIcon={20} placeholder="Search..." onPressIconRight={goSearchResult} />
           <Text style={styles.h1}>Browser Category</Text>
-          <View style={styles.tagContainer}>
-            <Tag text="Technology" />
-            <Tag text="Technology" />
-            <Tag text="Technology" />
+          <View style={{height: 75}}>
+            <ScrollView style={styles.tagContainer} horizontal showsHorizontalScrollIndicator={false}>
+              <Tag text="Technology"/>
+              <Tag text="Technology" />
+              <Tag text="Technology" />
+              <Tag text="Technology" />
+            </ScrollView>
           </View>
-          <Text style={styles.h1}>Browser Category</Text>
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
-          <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
+          <Text style={styles.h1}>Recommended Courses</Text>
+          <ScrollView>
+            <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
+            <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
+            <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse} />
+          </ScrollView>
         </View>
       </View>
     </>
@@ -65,6 +74,6 @@ const styles = StyleSheet.create({
   },
   tagContainer: {
     flexDirection: 'row',
-    marginVertical: 15
+    marginVertical: 15,
   },
 })

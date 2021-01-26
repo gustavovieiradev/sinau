@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
@@ -6,8 +6,15 @@ import perfilImg from '../../images/perfil.png';
 import rectangleImg from '../../images/rectangle.png';
 import cardRoseImg from '../../images/cardrose.png';
 import Card from '../../components/Card';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Dashboard() {
+  const navigation = useNavigation();
+
+  const handleGoCourse = useCallback(() => {
+    navigation.navigate('CourseDetail');
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -58,7 +65,7 @@ export default function Dashboard() {
           </View>
         </View>
         <Text style={styles.textReccomended}>Recommendation</Text>
-        <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
+        <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} handlePress={handleGoCourse}/>
       </View>
     </View>
   )
