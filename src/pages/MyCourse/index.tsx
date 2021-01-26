@@ -1,14 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useCallback } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 
+import styleSheet from './styles';
 import cardRoseImg from '../../images/cardrose.png';
 
 export default function MyCourse() {
-  
+  const [segment, setSegment] = useState<string>('in-progress');
+
+  const styles = styleSheet({segment});
   const navigation = useNavigation();
 
   const goBack = useCallback(() => {
@@ -25,8 +29,12 @@ export default function MyCourse() {
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.title}>
-            <Text style={styles.h1}>In Progress</Text>
-            <Text style={styles.h2}>Done</Text>
+            <TouchableOpacity style={styles.segment} onPress={() => setSegment('in-progress')}>
+              <Text style={styles.h1}>In Progress</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.segment} onPress={() => setSegment('done')}>
+              <Text style={styles.h2}>Done</Text>
+            </TouchableOpacity>
           </View>
           <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
           <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
@@ -37,36 +45,3 @@ export default function MyCourse() {
     </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#6360FF',
-  },
-  content: {
-    flex: 1,
-    backgroundColor: '#F1F1FA',
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
-    paddingHorizontal: 25,
-    paddingTop: 30
-  },
-  title: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 20
-  },
-  h1: {
-    fontFamily: 'DMSans_700Bold',
-    color: '#161719',
-    fontSize: 16,
-    marginHorizontal: 40
-  },
-  h2: {
-    fontFamily: 'DMSans_700Bold',
-    fontSize: 16,
-    color: '#91919F',
-    marginHorizontal: 40
-  }
-});
