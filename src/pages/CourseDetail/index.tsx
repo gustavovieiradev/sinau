@@ -16,9 +16,13 @@ export default function CourseDetail() {
     navigation.goBack();
   }, []);
   
+  const handleGoCart = useCallback(() => {
+    navigation.navigate('Cart');
+  }, []);
+
   return (
     <>
-      <Header text="Course Detail" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
+      <Header text="Course Detail" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} onPressRight={handleGoCart} />
       <View style={styles.headerContent}>
         <View style={styles.imagesHeader}>
           <Image source={rectangle128Img} style={styles.rectangleHeader}/>

@@ -19,9 +19,13 @@ export default function Search() {
     navigation.navigate('SearchResult');
   }, []);
 
+  const handleGoCart = useCallback(() => {
+    navigation.navigate('Cart');
+  }, []);
+
   return (
     <>
-      <Header text="Explore" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
+      <Header text="Explore" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} onPressRight={handleGoCart} />
       <View style={styles.container}>
         <View style={styles.content}>
           <Input rightIcon="search" colorRightIcon="#161719" sizeRightIcon={20} placeholder="Search..." onPressIconRight={goSearchResult} />

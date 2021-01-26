@@ -8,9 +8,10 @@ interface IProps<GLYPHS extends string> {
   iconRight?: GLYPHS;
   text: string;
   onPressLeft?(): void;
+  onPressRight?(): void;
 }
 
-export default function Header({text, iconLeft, iconRight, onPressLeft}: IProps<any>) {
+export default function Header({text, iconLeft, iconRight, onPressLeft, onPressRight}: IProps<any>) {
   return (
     <View style={styles.container}>
       <View style={styles.leftContent}>
@@ -21,7 +22,11 @@ export default function Header({text, iconLeft, iconRight, onPressLeft}: IProps<
         )} 
         <Text style={styles.title}>{text}</Text>
       </View>
-      {iconRight && (<Feather name="shopping-cart" color="#FCFCFF" size={20} />)}
+      {iconRight && (
+        <TouchableOpacity onPress={onPressRight} style={styles.buttonRight}>
+          <Feather name="shopping-cart" color="#FCFCFF" size={20} />
+        </TouchableOpacity>
+      )}
     </View>
   ) 
 }
@@ -48,6 +53,11 @@ const styles = StyleSheet.create({
   buttonLeft: {
     paddingRight: 20,
     paddingLeft: 5,
+    paddingVertical: 10,
+  },
+  buttonRight: {
+    paddingRight: 5,
+    paddingLeft: 20,
     paddingVertical: 10,
   }
 })

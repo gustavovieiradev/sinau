@@ -15,9 +15,13 @@ export default function MyCourse() {
     navigation.goBack();
   }, []);
 
+  const handleGoCart = useCallback(() => {
+    navigation.navigate('Cart');
+  }, []);
+
   return (
     <>
-      <Header text="My Courses" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
+      <Header text="My Courses" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} onPressRight={handleGoCart} />
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.title}>

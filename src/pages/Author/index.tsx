@@ -17,9 +17,13 @@ export default function Author() {
     navigation.goBack();
   }, []);
 
+  const handleGoCart = useCallback(() => {
+    navigation.navigate('Cart');
+  }, []);
+
   return (
     <>
-      <Header text="Author" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
+      <Header text="Author" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} onPressRight={handleGoCart} />
       <View style={styles.headerContent}>
         <View style={styles.infoAuthor}>
           <Image source={perfilImg} />
