@@ -15,8 +15,8 @@ export default function Header({text, iconLeft, iconRight, onPressLeft}: IProps<
     <View style={styles.container}>
       <View style={styles.leftContent}>
         {iconLeft && (
-          <TouchableOpacity onPress={onPressLeft}>
-            <Feather name={iconLeft} color="#FCFCFF" size={20} style={{marginRight: 20}}/>
+          <TouchableOpacity onPress={onPressLeft} style={styles.buttonLeft}>
+            <Feather name={iconLeft} color="#FCFCFF" size={20}/>
           </TouchableOpacity>
         )} 
         <Text style={styles.title}>{text}</Text>
@@ -44,5 +44,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#FCFCFF',
     fontFamily: 'DMSans_400Regular',
+  },
+  buttonLeft: {
+    paddingRight: 20,
+    paddingLeft: 5,
+    paddingVertical: 10,
   }
 })
