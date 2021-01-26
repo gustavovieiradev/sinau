@@ -55,7 +55,6 @@ export default function TabBar({ state, navigation, descriptors }: IProps) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 15,
     height: 70,
     paddingHorizontal: 30,
     flexDirection: 'row',
@@ -80,6 +79,7 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans_400Regular',
   },
   tab: {
+    padding: 15,
     alignItems: 'center'
   }
 })
