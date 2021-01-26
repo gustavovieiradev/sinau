@@ -10,16 +10,17 @@ interface IProps<GLYPHS extends string> {
   colorRightIcon?: string;
   sizeRightIcon?: number;
   placeholder?: string;
+  onPressIconRight?(): void;
 }
 
 export default function Input({ 
-  leftIcon, colorLeftIcon, sizeLeftIcon, placeholder, rightIcon, colorRightIcon, sizeRightIcon
+  leftIcon, colorLeftIcon, sizeLeftIcon, placeholder, rightIcon, colorRightIcon, sizeRightIcon, onPressIconRight = () => {}
 }: IProps<any>) {
   return (
     <View style={styles.container}>
       {leftIcon && (<Feather name={leftIcon} color={colorLeftIcon} size={sizeLeftIcon} style={{marginRight: 10}} />) }
       <TextInput style={styles.input} placeholder={placeholder} />
-      {rightIcon && (<Feather name={rightIcon} color={colorRightIcon} size={sizeRightIcon} />)}
+      {rightIcon && (<Feather name={rightIcon} color={colorRightIcon} size={sizeRightIcon}  onPress={onPressIconRight} />)}
     </View>
   )
 }

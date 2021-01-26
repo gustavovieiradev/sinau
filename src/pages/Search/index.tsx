@@ -14,12 +14,17 @@ export default function Search() {
   const goBack = useCallback(() => {
     navigation.goBack();
   }, []);
+
+  const goSearchResult = useCallback(() => {
+    navigation.navigate('SearchResult');
+  }, []);
+
   return (
     <>
       <Header text="Explore" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
       <View style={styles.container}>
         <View style={styles.content}>
-          <Input rightIcon="search" colorRightIcon="#161719" sizeRightIcon={20} placeholder="Search..." />
+          <Input rightIcon="search" colorRightIcon="#161719" sizeRightIcon={20} placeholder="Search..." onPressIconRight={goSearchResult} />
           <Text style={styles.h1}>Browser Category</Text>
           <View style={styles.tagContainer}>
             <Tag text="Technology" />
