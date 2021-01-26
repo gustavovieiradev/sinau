@@ -1,4 +1,5 @@
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useCallback } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
@@ -9,9 +10,16 @@ import cardRoseImg from '../../images/cardrose.png';
 import rectanguleImg from '../../images/rectangle.png';
 
 export default function Cart() {
+
+  const navigation = useNavigation();
+
+  const goBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
+
   return (
     <>
-      <Header text="Cart" iconLeft="chevron-left"/>
+      <Header text="Cart" iconLeft="chevron-left" onPressLeft={goBack} />
       <View style={styles.container}>
         <View style={styles.content}>
           <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />

@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import Header from '../../components/Header';
 
 import perfilImg from '../../images/perfilGrande.png';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Account() {
+
+  const navigation = useNavigation();
+
+  const goBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
+
   return (
     <>
-      <Header text="Account" iconLeft="chevron-left" />
+      <Header text="Account" iconLeft="chevron-left" onPressLeft={goBack}/>
       <View style={styles.container}>
         <View style={styles.headerContent}>
           <Image source={perfilImg} style={styles.image} />

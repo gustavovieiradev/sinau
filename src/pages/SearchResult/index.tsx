@@ -1,4 +1,5 @@
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useCallback } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Card from '../../components/Card';
@@ -7,9 +8,16 @@ import Header from '../../components/Header';
 import cardRoseImg from '../../images/cardrose.png';
 
 export default function SearchResult() {
+
+  const navigation = useNavigation();
+
+  const goBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
+
   return (
     <>
-      <Header text="Search Results" iconLeft="chevron-left" iconRight="shopping-cart"/>
+      <Header text="Search Results" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.title}>
@@ -21,7 +29,6 @@ export default function SearchResult() {
           <Card title="Declarative interfaces for any Apple Devices" price="IDR 850.000" valueRating="4.5" descriptionRating="By Sarah William" imageLeft={cardRoseImg} />
         </View>
       </View>
-      
     </>
   )
 }

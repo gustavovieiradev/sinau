@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
@@ -6,15 +6,20 @@ import Header from '../../components/Header';
 
 import profile2Img from '../../images/profile2.png';
 import Tag from '../../components/Tag';
+import { useNavigation } from '@react-navigation/native';
 
 export default function CourseVideo() {
   const [currentSegment, setCurrentSegment] = useState<string>('discussion');
 
+  const navigation = useNavigation();
 
+  const goBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
 
   return (
     <>
-      <Header text="Course Detail" iconLeft="chevron-left" />
+      <Header text="Course Detail" iconLeft="chevron-left" onPressLeft={goBack} />
       <View style={styles.video} ></View>
       <View style={styles.segments}>
         <View style={currentSegment === 'content' ? styles.segmentActive : styles.segment}>

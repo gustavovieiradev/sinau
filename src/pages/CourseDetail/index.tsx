@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Image, StyleSheet, View, Text } from 'react-native';
 
 import Header from '../../components/Header';
@@ -7,11 +7,18 @@ import Tag from '../../components/Tag';
 import rectangle128Img from '../../images/Rectangle128.png';
 import profile2Img from '../../images/profile2.png';
 import { RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 export default function CourseDetail() {
+  const navigation = useNavigation();
+
+  const goBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
+  
   return (
     <>
-      <Header text="Course Detail" iconLeft="chevron-left" iconRight="shopping-cart"/>
+      <Header text="Course Detail" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
       <View style={styles.headerContent}>
         <View style={styles.imagesHeader}>
           <Image source={rectangle128Img} style={styles.rectangleHeader}/>

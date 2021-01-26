@@ -1,4 +1,5 @@
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useCallback } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Card from '../../components/Card';
 
@@ -8,9 +9,14 @@ import Tag from '../../components/Tag';
 import cardRoseImg from '../../images/cardrose.png';
 
 export default function Search() {
+  const navigation = useNavigation();
+
+  const goBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
   return (
     <>
-      <Header text="Explore" iconLeft="chevron-left" iconRight="shopping-cart"/>
+      <Header text="Explore" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
       <View style={styles.container}>
         <View style={styles.content}>
           <Input rightIcon="search" colorRightIcon="#161719" sizeRightIcon={20} placeholder="Search..." />

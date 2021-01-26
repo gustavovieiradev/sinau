@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Image, StyleSheet, View, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
@@ -7,11 +7,19 @@ import Header from '../../components/Header';
 
 import perfilImg from '../../images/perfil.png';
 import cardRoseImg from '../../images/cardrose.png';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Author() {
+
+  const navigation = useNavigation();
+
+  const goBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
+
   return (
     <>
-      <Header text="Author" iconLeft="chevron-left" iconRight="shopping-cart"/>
+      <Header text="Author" iconLeft="chevron-left" iconRight="shopping-cart" onPressLeft={goBack} />
       <View style={styles.headerContent}>
         <View style={styles.infoAuthor}>
           <Image source={perfilImg} />

@@ -1,18 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface IProps<GLYPHS extends string> {
   iconLeft?: GLYPHS;
   iconRight?: GLYPHS;
   text: string;
+  onPressLeft?(): void;
 }
 
-export default function Header({text, iconLeft, iconRight}: IProps<any>) {
+export default function Header({text, iconLeft, iconRight, onPressLeft}: IProps<any>) {
   return (
     <View style={styles.container}>
       <View style={styles.leftContent}>
-        {iconLeft && (<Feather name={iconLeft} color="#FCFCFF" size={20} style={{marginRight: 20}}/>)} 
+        {iconLeft && (
+          <TouchableOpacity onPress={onPressLeft}>
+            <Feather name={iconLeft} color="#FCFCFF" size={20} style={{marginRight: 20}}/>
+          </TouchableOpacity>
+        )} 
         <Text style={styles.title}>{text}</Text>
       </View>
       {iconRight && (<Feather name="shopping-cart" color="#FCFCFF" size={20} />)}
