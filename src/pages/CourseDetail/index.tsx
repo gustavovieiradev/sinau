@@ -6,8 +6,9 @@ import Tag from '../../components/Tag';
 
 import rectangle128Img from '../../images/Rectangle128.png';
 import profile2Img from '../../images/profile2.png';
-import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
+import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CourseDetail() {
   const navigation = useNavigation();
@@ -43,28 +44,35 @@ export default function CourseDetail() {
         </View>
       </View>
       <View style={styles.container}>
-        <View style={styles.content}>
-          <Text style={styles.h2}>Description</Text>
-          <Text style={styles.description}>Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Vel quam elementum pulvinar etiamnim lobortis scelerisque. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur....</Text>
-          <Text style={styles.showMore}>Show more</Text>
-          <View style={styles.divider}></View>
-          <Text style={styles.h2}>Author</Text>
-          <TouchableOpacity style={styles.boxAuthor} onPress={handleGoAuthor}>
-            <Image source={profile2Img} style={styles.imgProfile}/>
-            <View style={styles.boxAuthorText}>
-              <Text style={styles.boxAuthorTitle}>Sarah William</Text>
-              <Text style={styles.boxAuthorSubTitle}>4 courses - 1400 students</Text>
-            </View>
-          </TouchableOpacity>
-          <View style={styles.boxButton}>
-            <RectButton style={styles.buttonSeeDetail} onPress={handleGoCourseVideo}>
-              <Text style={styles.buttonText}>See detail</Text>
-            </RectButton>
-            <RectButton style={styles.buttonAddToCart} onPress={handleGoCart}>
-              <Text style={styles.buttonText}>Add to cart</Text>
-            </RectButton>
-          </View>
-        </View>
+        <ScrollView style={styles.content}>
+          <SafeAreaView style={{marginBottom: 100}}>
+            <Text style={styles.h2}>Description</Text>
+            <Text style={styles.description}>Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Vel quam elementum pulvinar etiamnim lobortis scelerisque. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur....</Text>
+            <Text style={styles.description}>Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Vel quam elementum pulvinar etiamnim lobortis scelerisque. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur....</Text>
+            <Text style={styles.description}>Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Vel quam elementum pulvinar etiamnim lobortis scelerisque. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur....</Text>
+            <Text style={styles.description}>Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Vel quam elementum pulvinar etiamnim lobortis scelerisque. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur....</Text>
+            <Text style={styles.description}>Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Vel quam elementum pulvinar etiamnim lobortis scelerisque. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur....</Text>
+            <Text style={styles.description}>Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Vel quam elementum pulvinar etiamnim lobortis scelerisque. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur....</Text>
+            <Text style={styles.showMore}>Show more</Text>
+            <View style={styles.divider}></View>
+            <Text style={styles.h2}>Author</Text>
+            <TouchableOpacity style={styles.boxAuthor} onPress={handleGoAuthor}>
+              <Image source={profile2Img} style={styles.imgProfile}/>
+              <View style={styles.boxAuthorText}>
+                <Text style={styles.boxAuthorTitle}>Sarah William</Text>
+                <Text style={styles.boxAuthorSubTitle}>4 courses - 1400 students</Text>
+              </View>
+            </TouchableOpacity>
+          </SafeAreaView>
+        </ScrollView>
+      </View>
+      <View style={styles.boxButton}>
+        <RectButton style={styles.buttonSeeDetail} onPress={handleGoCourseVideo}>
+          <Text style={styles.buttonText}>See detail</Text>
+        </RectButton>
+        <RectButton style={styles.buttonAddToCart} onPress={handleGoCart}>
+          <Text style={styles.buttonText}>Add to cart</Text>
+        </RectButton>
       </View>
     </>
   )
@@ -105,7 +113,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     paddingHorizontal: 25,
-    paddingTop: 30
+    paddingBottom: 100
   },
   h1: {
     fontFamily: 'DMSans_700Bold',
@@ -167,8 +175,11 @@ const styles = StyleSheet.create({
     marginLeft: 10
   },
   boxButton: {
+    backgroundColor: '#FCFCFF',
     position: 'absolute',
-    bottom: 25,
+    // paddingTop: 15,
+    paddingBottom: 20,
+    bottom: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

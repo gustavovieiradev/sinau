@@ -27,12 +27,16 @@ export default function CourseVideo() {
       <Header text="Course Detail" iconLeft="chevron-left" onPressLeft={goBack} />
       <View style={styles.video} ></View>
       <View style={styles.segments}>
-        <TouchableOpacity style={currentSegment === 'content' ? styles.segmentActive : styles.segment} onPress={() => handleSegment('content')} >
-          <Text style={currentSegment === 'content' ? styles.segmentActiveText : styles.segmentText}>Course Content</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={currentSegment === 'discussion' ? styles.segmentActive : styles.segment} onPress={() => handleSegment('discussion')}>
-          <Text style={currentSegment === 'discussion' ? styles.segmentActiveText : styles.segmentText}>Discussion</Text>
-        </TouchableOpacity>
+        <View style={currentSegment === 'content' ? styles.segmentActive : styles.segment}>
+          <TouchableOpacity onPress={() => handleSegment('content')} style={{width: '100%', height: 56, justifyContent: 'center'}}>
+            <Text style={currentSegment === 'content' ? styles.segmentActiveText : styles.segmentText}>Course Content</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={currentSegment === 'discussion' ? styles.segmentActive : styles.segment}>
+          <TouchableOpacity onPress={() => handleSegment('discussion')} style={{width: '100%', height: 56, justifyContent: 'center'}} >
+            <Text style={currentSegment === 'discussion' ? styles.segmentActiveText : styles.segmentText}>Discussion</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       {currentSegment === 'content' && (
         <View style={styles.content}>
@@ -151,29 +155,26 @@ const styles = StyleSheet.create({
   },
   segments: {
     flexDirection: 'row',
+    height: 56
   },
   segmentActive: {
     flex: .5,
-    paddingVertical: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#FCFCFF'
   },
   segment: {
     flex: .5,
-    paddingVertical: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#F1F1FA'
   },
   segmentActiveText: {
     color: '#161719',
     fontSize: 14,
+    textAlign: 'center',
     fontFamily: 'DMSans_400Regular',
   },
   segmentText: {
     color: '#91919F',
     fontSize: 14,
+    textAlign: 'center',
     fontFamily: 'DMSans_400Regular',
   },
   content: {
