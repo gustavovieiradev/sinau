@@ -1,13 +1,19 @@
-import React from 'react';
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import React, { useCallback } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 import logoImg from '../../images/logo.png';
 import unionImg from '../../images/Union.png';
 import { RectButton } from 'react-native-gesture-handler';
 import Input from '../../components/Input';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Login() {
+  const navigation = useNavigation();
+
+  const handleNavigateDashboard = useCallback(() => {
+    navigation.navigate('Tabs');
+  }, [])
+
   return (
     <View style={styles.container}>
       <View style={styles.first}>
@@ -19,10 +25,10 @@ export default function Login() {
         <View>
           <Input leftIcon="mail" colorLeftIcon="#6360FF" sizeLeftIcon={20} placeholder="Email" />
           <Input leftIcon="lock" colorLeftIcon="#6360FF" sizeLeftIcon={20} placeholder="Password" />
-          <RectButton style={styles.buttonSignIn}>
+          <RectButton style={styles.buttonSignIn} onPress={handleNavigateDashboard}>
             <Text style={styles.textButton}>Sign In</Text>
           </RectButton>
-          <RectButton style={styles.buttonGoogle}>
+          <RectButton style={styles.buttonGoogle} onPress={handleNavigateDashboard}>
             <Text style={styles.textButton}>Sign In with Google</Text>
           </RectButton>
         </View>
